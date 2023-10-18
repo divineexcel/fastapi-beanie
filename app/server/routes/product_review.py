@@ -17,7 +17,7 @@ async def get_reviews() -> List[ProductReview]:
     reviews = await ProductReview.find_all().to_list()
     
     # return reviews
-    return {"message": "review lst"}
+    return {"message": "review lst", "reviews": reviews}
 
 @router.get("/{id}", response_description="Review record retrieved")
 async def get_review_record(id: PydanticObjectId) -> ProductReview:
