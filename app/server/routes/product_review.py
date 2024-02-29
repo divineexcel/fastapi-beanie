@@ -11,7 +11,6 @@ router = APIRouter()
 async def add_product_review(review: ProductReview) -> dict:
     await review.create()
     return {"message": "Review added successfully"}
-
 @router.get("/", response_description="Review records retrieved")
 async def get_reviews() -> List[ProductReview]:
     reviews = await ProductReview.find_all().to_list()
@@ -47,7 +46,7 @@ async def update_student_data(id: PydanticObjectId, req: UpdateProductReview) ->
     return review
 
 @router.delete("/{id}", response_description="Review record deleted from the database")
-async def delete_student_data(id: PydanticObjectId) -> dict:
+async def delete_product_data(id: PydanticObjectId) -> dict:
     record = await ProductReview.get(id)
 
     if not record:
